@@ -50,7 +50,7 @@ public class Conta {
 	}
 
 	boolean sacar(Saque saque){
-		if (saque.getValor() <= 0 || saque.getValor() > this.saldo) {
+		if (saque.getValor() <= this.saldo && this.equals(saque.getContaOrigem())) {
 			return false;
 		} else {
 			listaOper.add(saque);
@@ -78,4 +78,13 @@ public class Conta {
 				+ "]";
 	}
 
+	@Override
+    public boolean equals(Object obj) {
+        if(this == obj) {
+            return true;
+        } else if(obj != null && obj instanceof Conta && this.numero == ((Conta)obj).getNumero()) {
+			return false;
+		}
+		return false;
+    }
 }

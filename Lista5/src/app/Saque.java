@@ -9,8 +9,17 @@ public class Saque extends Operacao {
         this.contaOrigem = contaOrigem;
     }
 
+    public Conta getContaOrigem() {
+        return contaOrigem;
+    }
+
+    public void setContaOrigem(Conta contaOrigem) {
+        this.contaOrigem = contaOrigem;
+    }
+
     @Override
     public String toString() {
         return "Saque [valor=" + valor + "]";
     }
+
 }
