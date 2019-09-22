@@ -3,7 +3,7 @@ package app;
 /**
  * ContaBancaria
  */
-public abstract class ContaBancaria {
+public abstract class ContaBancaria implements Imprimivel {
     int numero;
     double saldo;
 
@@ -14,6 +14,8 @@ public abstract class ContaBancaria {
 
     abstract boolean sacar(double valor);
     abstract boolean depositar(double valor);
+
+    abstract boolean transferir(double valor, ContaBancaria contaBancaria);
 
     @Override
     public boolean equals(Object obj) {

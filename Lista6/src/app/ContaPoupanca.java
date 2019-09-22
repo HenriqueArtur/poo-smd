@@ -3,7 +3,7 @@ package app;
 /**
  * ContaPoupanca
  */
-public class ContaPoupanca extends ContaBancaria implements Imprimivel {
+public class ContaPoupanca extends ContaBancaria {
     double limite;
 
     public ContaPoupanca(int numero, double saldo, double limite) {
@@ -29,12 +29,24 @@ public class ContaPoupanca extends ContaBancaria implements Imprimivel {
     }
 
     @Override
+    public boolean transferir(double valor, ContaBancaria contaBancaria) {
+        if(this.equals(contaBancaria)){
+            return false;
+        } else if(valor <= getSaldo() + this.limite) {
+            this.sacar(valor);
+            contaBancaria.depositar(valor);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
     public String toString() {
-        return "ContaPoupanca [numero=" + this.numero + "saldo=" + this.saldo + "limite=" + this.limite + "]";
+        return "ContaPoupanca [numero=" + this.numero + ", saldo=" + this.saldo + ", limite=" + this.limite + "]";
     }
     
     @Override
     public void mostraDados() {
-        System.out.println( "ContaPoupanca [numero=" + this.numero + "saldo=" + this.saldo + "limite=" + this.limite + "]");
+        System.out.println( "ContaPoupanca [numero=" + this.numero + ", saldo=" + this.saldo + ", limite=" + this.limite + "]");
     }
 }
